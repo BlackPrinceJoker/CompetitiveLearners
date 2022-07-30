@@ -1,4 +1,6 @@
-
+<?php
+	include_once 'header.php'
+?>
 				<div id ="levelSelect">
 					<h2> Select Level </h2>
 					<div class="btn-group">
