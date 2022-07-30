@@ -47,9 +47,17 @@
 				x = y * x
 			}
 		};
-		//Key press
+		//Keyboard press
 		$(this).on('keypress', function(event) {
-			$("#answer").text($("#answer").text() + String.fromCharCode(event.keyCode))
+			addNum(String.fromCharCode(event.keyCode));
+		});
+		//Delete
+		function del() {
+			let answer = $("#answer").text()
+			$("#answer").text(String(answer).slice(0, answer.length - 1));
+		};
+		function addNum(num) {
+			$("#answer").text($("#answer").text() + num)
 			if ($("#answer").text().length == String(z).length) {
 				if ($("#answer").text() == z) {
 					runMath();
@@ -61,7 +69,7 @@
 				
 				setTimeout(clearAnswer, 100)
 			}
-		});
+		};
 		//Problem Generator
 		function runMath() {
 			getNums(mult_lev[level])
@@ -71,8 +79,9 @@
 		$(document).ready(function(){
 			$(".levelSelect").click(function(){
 				level = this.id
-				$(".levelSelect").remove();
-				runMath()
+				$("#levelSelect").hide();
+				$("#solveWindow").show();
+				runMath();
 			});
 		});
 		</script>
@@ -97,6 +106,12 @@
 			.wrong {				
 				background-color: pink;
 				color: red;
+			}
+			.keypad {
+				font-size: 50px;
+				border: 2px solid #555555;
+				border-radius: 10px;
+				padding: 5px;
 			}
 			
 			
@@ -134,28 +149,32 @@
 						<button id="4" type="button" class="btn btn-info levelSelect">Level 5</button>
 					</div>
 				</div>
-				<div id="hide">
+				<div id="solveWindow" style="display: none">
 					<ul class = "list-group list-group-horizontal ">
 						<h1 id="problem" style="font-size:60px"></h1>
 						<h1 style="font-size:60px">&nbsp;</h1>
 						<h1 id ="answer" style="font-size:60px"></h1>
 					</ul>
 					<br>
-					<div class="btn-group-vertical text" style="font-size:40px">
+					<div class="btn-group-vertical text">
 						<div class="btn-group">
-							<button type="button" class="btn btn-secondary btn-lg" style="font-size:70px">&nbsp;1&nbsp;</button>
-							<button type="button" class="btn btn-secondary btn-lg" style="font-size:70px">&nbsp;2&nbsp;</button>
-							<button type="button" class="btn btn-secondary btn-lg" style="font-size:70px">&nbsp;3&nbsp;</button>
+							<button type="button" class="btn btn-secondary btn-lg keypad" onclick="addNum(7)">&nbsp;7&nbsp;</button>
+							<button type="button" class="btn btn-secondary btn-lg keypad" onclick="addNum(8)">&nbsp;8&nbsp;</button>
+							<button type="button" class="btn btn-secondary btn-lg keypad" onclick="addNum(9)">&nbsp;9&nbsp;</button>
 						</div>
 						<div class="btn-group">
-							<button type="button" class="btn btn-secondary btn-lg" style="font-size:70px">&nbsp;4&nbsp;</button>
-							<button type="button" class="btn btn-secondary btn-lg" style="font-size:70px">&nbsp;5&nbsp;</button>
-							<button type="button" class="btn btn-secondary btn-lg" style="font-size:70px">&nbsp;6&nbsp;</button>
+							<button type="button" class="btn btn-secondary btn-lg keypad" onclick="addNum(4)">&nbsp;4&nbsp;</button>
+							<button type="button" class="btn btn-secondary btn-lg keypad" onclick="addNum(5)">&nbsp;5&nbsp;</button>
+							<button type="button" class="btn btn-secondary btn-lg keypad" onclick="addNum(6)">&nbsp;6&nbsp;</button>
 						</div>
 						<div class="btn-group">
-							<button type="button" class="btn btn-secondary btn-lg" style="font-size:70px">&nbsp;7&nbsp;</button>
-							<button type="button" class="btn btn-secondary btn-lg" style="font-size:70px">&nbsp;8&nbsp;</button>
-							<button type="button" class="btn btn-secondary btn-lg" style="font-size:70px">&nbsp;9&nbsp;</button>
+							<button type="button" class="btn btn-secondary btn-lg keypad" onclick="addNum(1)">&nbsp;1&nbsp;</button>
+							<button type="button" class="btn btn-secondary btn-lg keypad" onclick="addNum(2)">&nbsp;2&nbsp;</button>
+							<button type="button" class="btn btn-secondary btn-lg keypad" onclick="addNum(3)">&nbsp;3&nbsp;</button>
+						</div>
+						<div class="btn-group">
+							<button type="button" class="btn btn-secondary btn-lg keypad" onclick="addNum(0)">&nbsp;0&nbsp;</button>
+							<button type="button" class="btn btn-secondary btn-lg keypad" onclick="del()">del</button>
 						</div>
 					</div>
 				</div>
