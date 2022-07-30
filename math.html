@@ -14,7 +14,7 @@
 		
 		<script>
 		let mult_lev = [[1,5],[3,10],[5,15],[5,20],[10,30]]		
-		let add_sub_lev = [[1,10],[5,20],[10,40],[20,80],[40,160]]
+		let add_sub_lev = [[1,10],[5,30],[20,60],[30,120],[40,210]]
 		let div_lev = [[1,5],[3,8],[5,10],[8,15],[10,20]]
 		let operator = ["+", "-", "x", "/"]
 		let operatorNum = 0
@@ -69,9 +69,9 @@
 		};
 		//Level Select
 		$(document).ready(function(){
-			$("button").click(function(){
+			$(".levelSelect").click(function(){
 				level = this.id
-				$("#levelSelect").remove();
+				$(".levelSelect").remove();
 				runMath()
 			});
 		});
@@ -127,18 +127,38 @@
 				<div id ="levelSelect">
 					<h2> Select Level </h2>
 					<div class="btn-group">
-						<button id="0" type="button" class="btn btn-info">Level 1</button>
-						<button id="1" type="button" class="btn btn-info">Level 2</button>
-						<button id="2" type="button" class="btn btn-info">Level 3</button>
-						<button id="3" type="button" class="btn btn-info">Level 4</button>
-						<button id="4" type="button" class="btn btn-info">Level 5</button>
+						<button id="0" type="button" class="btn btn-info levelSelect">Level 1</button>
+						<button id="1" type="button" class="btn btn-info levelSelect">Level 2</button>
+						<button id="2" type="button" class="btn btn-info levelSelect">Level 3</button>
+						<button id="3" type="button" class="btn btn-info levelSelect">Level 4</button>
+						<button id="4" type="button" class="btn btn-info levelSelect">Level 5</button>
 					</div>
 				</div>
-				<ul class = "list-group list-group-horizontal ">
-					<h1 id="problem"></h1>
-					<h1>&nbsp;</h1>
-					<h1 id ="answer"></h1>
-				</ul>
+				<div id="hide">
+					<ul class = "list-group list-group-horizontal ">
+						<h1 id="problem" style="font-size:60px"></h1>
+						<h1 style="font-size:60px">&nbsp;</h1>
+						<h1 id ="answer" style="font-size:60px"></h1>
+					</ul>
+					<br>
+					<div class="btn-group-vertical text" style="font-size:40px">
+						<div class="btn-group">
+							<button type="button" class="btn btn-secondary btn-lg" style="font-size:70px">&nbsp;1&nbsp;</button>
+							<button type="button" class="btn btn-secondary btn-lg" style="font-size:70px">&nbsp;2&nbsp;</button>
+							<button type="button" class="btn btn-secondary btn-lg" style="font-size:70px">&nbsp;3&nbsp;</button>
+						</div>
+						<div class="btn-group">
+							<button type="button" class="btn btn-secondary btn-lg" style="font-size:70px">&nbsp;4&nbsp;</button>
+							<button type="button" class="btn btn-secondary btn-lg" style="font-size:70px">&nbsp;5&nbsp;</button>
+							<button type="button" class="btn btn-secondary btn-lg" style="font-size:70px">&nbsp;6&nbsp;</button>
+						</div>
+						<div class="btn-group">
+							<button type="button" class="btn btn-secondary btn-lg" style="font-size:70px">&nbsp;7&nbsp;</button>
+							<button type="button" class="btn btn-secondary btn-lg" style="font-size:70px">&nbsp;8&nbsp;</button>
+							<button type="button" class="btn btn-secondary btn-lg" style="font-size:70px">&nbsp;9&nbsp;</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</body>
 		
